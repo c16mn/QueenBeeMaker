@@ -2,8 +2,7 @@ import sys
 
 from dict_ref import dref
 
-l = sys.argv[1]
-c = sys.argv[2]
+
 
 
 def solve(letters, center):
@@ -22,7 +21,8 @@ def solve(letters, center):
 
     with open("dict_short.txt", "r") as dr:
         for line in dr:
-            if set(line.strip()).issubset(lset):
+            line = line.strip()
+            if set(line).issubset(lset):
                 ans.append(line)
 
     return ans
@@ -30,5 +30,7 @@ def solve(letters, center):
     #with open "dict_short.txt" as d:
 
 if __name__ == "__main__":
+    l = sys.argv[1]
+    c = sys.argv[2]
     print(solve(l, c))
     
