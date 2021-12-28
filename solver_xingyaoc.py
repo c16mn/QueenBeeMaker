@@ -38,8 +38,25 @@ def solve(letters: str, center: str):
 # with open('spelling_bee_lookup.json', 'w') as fp: json.dump(ld, fp)
 
 
+def evaluator(valid_words):
+    with open('answers_12272021.txt', 'r') as file:
+        answers = file.readlines()
+    answers = [a.strip().upper() for a in answers]
+
+    intersection = set(valid_words).intersection(set(answers))
+    union = set(valid_words).union(set(answers))
+    iou = float(len(intersection)) / len(union)
+    print(f'IOU score: {iou}')
+    iot = float(len(intersection)) / len(set(answers))
+    print(f'Intersection-Over-Truth score: {iot}')
+    print('Symmetric Difference: ')
+    print(set(valid_words).symmetric_difference(set(answers)))
+
+
+
 if __name__ == "__main__":
     letters, center = sys.argv[1], sys.argv[2]
-    valid_words = solve(letters, center)
-    print(list(valid_words))
+    valid_words = list(solve(letters, center))
+    evaluator(valid_words)
+
 
