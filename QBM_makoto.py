@@ -22,7 +22,7 @@ def solve(letters, center):
     with open("dict_short.txt", "r") as dr:
         for line in dr:
             line = line.strip()
-            if set(line).issubset(lset):
+            if (set(line).issubset(lset) and center in line):
                 ans.append(line)
 
     return ans
