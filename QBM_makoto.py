@@ -25,6 +25,7 @@ def solve(letters, center):
             if (set(line).issubset(lset) and center in line):
                 ans.append(line)
 
+    #print(len(ans))
     return ans
     
     #with open "dict_short.txt" as d:
